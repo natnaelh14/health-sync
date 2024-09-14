@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Disclosure,
   DisclosureButton,
@@ -10,10 +12,11 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 export function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-[#e87559] shadow">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">
@@ -99,6 +102,7 @@ export function Navbar() {
                 <MenuItem>
                   <Link
                     href="#"
+                    onClick={() => signOut()}
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                   >
                     Sign out
@@ -199,8 +203,7 @@ export function Navbar() {
               Settings
             </DisclosureButton>
             <DisclosureButton
-              as="a"
-              href="#"
+              onClick={() => signOut()}
               className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
             >
               Sign out
